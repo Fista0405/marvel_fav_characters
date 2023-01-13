@@ -1,0 +1,36 @@
+.container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    background-color: #202020;
+    border: solid 1px #393939;
+    height: 200px;
+}
+
+.info {
+    color: white;
+    display: grid;
+    grid-column: 2 / -2;
+    grid-row: 1 / 2;
+    justify-content: space-around;
+}
+
+.links {
+    display: grid;
+    color: white;
+    grid-column: 2 / -2;
+    grid-row: 2 / -1;
+    height: 100px;
+    border: solid 1px white;
+    align-items: center;
+}
+
+.list {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 5px;
+}
