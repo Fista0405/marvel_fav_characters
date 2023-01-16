@@ -1,8 +1,3 @@
-html, body {
-    margin: 0;
-    overflow: hidden;
-}
-
-li {
-    list-style: none;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
