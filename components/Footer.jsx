@@ -2,8 +2,8 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="header-footer grid grid-cols-1 grid-rows-2 gap-2">
-      <div className="flex justify-around items-center">
+    <footer className="header-footer grid grid-cols-1 grid-rows-2 gap-2 mt-auto ">
+      <div className="flex justify-around items-center ">
         <Image
           src="/../public/marvel-m.png"
           alt="Marvel Letter M Logo"
