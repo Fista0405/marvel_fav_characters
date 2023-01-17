@@ -2,6 +2,7 @@ import Head from "next/head";
 import { Inter } from "@next/font/google";
 import { fetchData } from "../lib/utils";
 import { useEffect, useState } from "react";
+import SearchBar from "components/SearchBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,9 +17,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/marvel.ico" />
       </Head>
-      <>
-        <h1 className="text-3xl font-bold underline">Marvel</h1>
-      </>
+      <section className="flex flex-col items-center justify-center ">
+        <h1 className="uppercase text-xl mb-6">Discover Marvel Characters</h1>
+        <SearchBar placeholder={"Search..."} />
+      </section>
     </>
   );
 }
