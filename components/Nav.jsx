@@ -8,6 +8,7 @@ const Nav = () => {
         <li>
           <Link href="/">
             <Image
+              priority
               src="/../public/marvel.png"
               alt="Marvel Logo"
               width={130}
