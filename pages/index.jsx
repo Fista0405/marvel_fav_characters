@@ -1,13 +1,29 @@
-import Head from "next/head";
-import { Inter } from "@next/font/google";
-import { fetchData } from "../lib/utils";
-import { useEffect, useState } from "react";
-import SearchBar from "components/SearchBar";
+import { useState } from "react";
 
-const inter = Inter({ subsets: ["latin"] });
+import Head from "next/head";
+import SearchBar from "components/SearchBar";
+import GridList from "components/GridList";
+import Card from "components/Card";
+
+const IMG_SIZE = "standard_large";
 
 export default function Home() {
   const [data, setData] = useState([]);
+  console.log(data.data?.thumbnail);
+
+  let cards;
+
+  if (data) {
+    cards = data.map((item) => {
+      return (
+        <Card
+          name={item.name}
+          id={item.id}
+          tumbnail={`${item.thumbnail.path}/${IMG_SIZE}.${item.thumbnail.extension}`}
+        />
+      );
+    });
+  }
 
   return (
     <>
@@ -17,10 +33,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/marvel.ico" />
       </Head>
-      <section className="flex flex-col items-center justify-center ">
+      <div className="flex flex-col items-center justify-center">
         <h1 className="uppercase text-xl mb-6">Discover Marvel Characters</h1>
-        <SearchBar placeholder={"Search..."} />
-      </section>
+        <SearchBar placeholder={"Search..."} setter={setData} />
+        <GridList>{cards ? cards : ""}</GridList>
+      </div>
     </>
   );
+  console.log(thumbnail);
 }
