@@ -1,4 +1,4 @@
-Application in which you can search for Marvel characters, see their detail information and make favourite list of characters.
+Application in which you can search for Marvel characters, see their detail information and make favorite list of characters.
 
 !!!Application is still work in progress.!!!
 
