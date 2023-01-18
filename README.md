@@ -4,7 +4,7 @@ Application in which you can search for Marvel characters, see their detail info
 
 Applicaton uses [Marvel-API](https://developer.marvel.com/)
 
-App is created using [Next.js](https://nextjs.org/)
+App is created using [Next.js](https://nextjs.org/) & [Tailwind CSS](https://tailwindcss.com/)
 
 ## Getting Started
 
@@ -17,4 +17,3 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
