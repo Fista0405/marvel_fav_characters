@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -13,11 +14,22 @@ const Footer = () => {
         <div>Social Network Grid</div>
       </div>
       <ul className="flex justify-around items-center">
-        <li className="hover:text-red-500">Terms of Use</li>
-        <li className="hover:text-red-500">Privacy Policy</li>
-        <li className="hover:text-red-500">License Agreement</li>
-        <li className="hover:text-red-500">Marvel Insider Terms</li>
-        <li className="hover:text-red-500">Copyrigh 2023 MARVEL</li>
+        <Link href="/" className="hover:text-red-500">
+          Terms of Use
+        </Link>
+        <Link href="/" className="hover:text-red-500">
+          Privacy Policy
+        </Link>
+        <Link href="/" className="hover:text-red-500">
+          License Agreement
+        </Link>
+        <Link
+          href="https://www.marvel.com/"
+          target="_blank"
+          className="hover:text-red-500"
+        >
+          Data provided by Marvel. © 2014 Marvel
+        </Link>
       </ul>
     </footer>
   );

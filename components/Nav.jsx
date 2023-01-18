@@ -4,7 +4,7 @@ import Link from "next/link";
 const Nav = () => {
   return (
     <nav>
-      <ul className="header-footer flex justify-around items-center uppercase border-b drop-shadow-lg">
+      <ul className="header-footer flex justify-evenly items-center uppercase border-b drop-shadow-lg">
         <li>
           <Link href="/">
             <Image
@@ -14,6 +14,11 @@ const Nav = () => {
               width={130}
               height={52}
             />
+          </Link>
+        </li>
+        <li>
+          <Link className="hover:text-red-500" href="/favorites">
+            Favorites
           </Link>
         </li>
         <li>
