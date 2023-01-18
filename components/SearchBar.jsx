@@ -1,24 +1,15 @@
 import { useRef } from "react";
-import { fetchData } from "lib/utils";
+import { fetchCharacterDataList } from "lib/utils";
 
 const SearchBar = ({ placeholder, setter }) => {
-  let input = useRef(null);
-
-  console.log(input);
+  let input = useRef("");
 
   const handleClick = async (e) => {
     e.preventDefault();
     let value = input.current.value;
 
-    if (value === "") return;
-
-    try {
-      let heroes = await fetchData(value);
-
-      setter(heroes);
-    } catch (err) {
-      console.error(err);
-    }
+    let heroes = await fetchCharacterDataList(value);
+    setter(heroes);
   };
 
   return (

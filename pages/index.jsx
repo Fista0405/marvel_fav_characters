@@ -9,17 +9,17 @@ const IMG_SIZE = "standard_large";
 
 export default function Home() {
   const [data, setData] = useState([]);
-  console.log(data.data?.thumbnail);
 
   let cards;
 
   if (data) {
-    cards = data.map((item) => {
+    cards = data.map((hero) => {
       return (
         <Card
-          name={item.name}
-          id={item.id}
-          tumbnail={`${item.thumbnail.path}/${IMG_SIZE}.${item.thumbnail.extension}`}
+          key={hero.id}
+          name={hero.name}
+          id={hero.id}
+          tumbnail={`${hero.thumbnail.path}/${IMG_SIZE}.${hero.thumbnail.extension}`}
         />
       );
     });
@@ -35,10 +35,9 @@ export default function Home() {
       </Head>
       <div className="flex flex-col items-center justify-center">
         <h1 className="uppercase text-xl mb-6">Discover Marvel Characters</h1>
-        <SearchBar placeholder={"Search..."} setter={setData} />
+        <SearchBar placeholder={"Browse Marvel Characters"} setter={setData} />
         <GridList>{cards ? cards : ""}</GridList>
       </div>
     </>
   );
-  console.log(thumbnail);
 }
