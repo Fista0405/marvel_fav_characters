@@ -34,7 +34,9 @@ export default function Home() {
         <link rel="icon" href="/marvel.ico" />
       </Head>
       <div className="flex flex-col items-center justify-center">
-        <h1 className="uppercase text-xl mb-6">Discover Marvel Characters</h1>
+        <h1 className="uppercase text-xl mb-6 text-center">
+          Discover Marvel Characters
+        </h1>
         <SearchBar placeholder={"Browse Marvel Characters"} setter={setData} />
         <GridList>{cards ? cards : ""}</GridList>
       </div>

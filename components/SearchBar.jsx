@@ -15,7 +15,7 @@ const SearchBar = ({ placeholder, setter }) => {
   return (
     <form className="flex flex-col">
       <div className="relative">
-        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+        <div className="hidden absolute inset-y-0 left-0 md:flex items-center pl-3 pointer-events-none">
           <svg
             aria-hidden="true"
             className="w-5 h-5 text-gray-600"
@@ -36,13 +36,13 @@ const SearchBar = ({ placeholder, setter }) => {
           ref={input}
           type="search"
           id="search"
-          className="block w-full p-4 pl-10 text-sm text-gray-900 rounded-lg focus:ring-red-700 focus:border-red-700"
+          className="block w-full p-4 pl-2 md:pl-10 text-sm text-gray-900 rounded-lg focus:ring-red-700 focus:border-red-700"
           placeholder={placeholder}
           required
         />
         <button
           onClick={handleClick}
-          className="text-white absolute right-2.5 bottom-2.5 bg-zinc-900 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2"
+          className="text-white absolute right-2.5 bottom-2.5 bg-zinc-900 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-2 md:px-4 py-2"
         >
           Search
         </button>
