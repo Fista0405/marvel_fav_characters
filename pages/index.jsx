@@ -9,14 +9,14 @@ import ReactPaginate from "react-paginate";
 const IMG_SIZE = "standard_large";
 
 export default function Home() {
-  const [data, setData] = useState([]);
+  const [hero, setHero] = useState([]);
   const [pageNum, setPageNum] = useState(0);
 
-  const usersPerPage = 10;
-  const pagesVisited = pageNum * usersPerPage;
+  const herosPerPage = 10;
+  const pagesVisited = pageNum * herosPerPage;
 
-  const displayUsers = data
-    .slice(pagesVisited, pagesVisited + usersPerPage)
+  const heroCardsList = hero
+    .slice(pagesVisited, pagesVisited + herosPerPage)
     .map((hero) => {
       return (
         <Card
@@ -28,7 +28,7 @@ export default function Home() {
       );
     });
 
-  const pageCount = Math.ceil(data.length / usersPerPage);
+  const pageCount = Math.ceil(hero.length / herosPerPage);
   const changePage = ({ selected }) => {
     setPageNum(selected);
   };
@@ -45,12 +45,13 @@ export default function Home() {
         <h1 className="uppercase text-xl mb-6 text-center">
           Discover Marvel Characters
         </h1>
-        <SearchBar placeholder={"Browse Marvel Characters"} setter={setData} />
-        <GridList>{displayUsers}</GridList>
+        <SearchBar placeholder={"Browse Marvel Characters"} setter={setHero} />
+        <GridList>{heroCardsList}</GridList>
         <ReactPaginate
           pageCount={pageCount}
           onPageChange={changePage}
           containerClassName="border border-black flex gap-1 m-2 p-2"
+          previousLabel="Previous"
         />
       </div>
     </>
