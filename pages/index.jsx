@@ -4,16 +4,20 @@ import Head from "next/head";
 import SearchBar from "components/SearchBar";
 import GridList from "components/GridList";
 import Card from "components/Card";
+import ReactPaginate from "react-paginate";
 
 const IMG_SIZE = "standard_large";
 
 export default function Home() {
   const [data, setData] = useState([]);
+  const [pageNum, setPageNum] = useState(0);
 
-  let cards;
+  const usersPerPage = 10;
+  const pagesVisited = pageNum * usersPerPage;
 
-  if (data) {
-    cards = data.map((hero) => {
+  const displayUsers = data
+    .slice(pagesVisited, pagesVisited + usersPerPage)
+    .map((hero) => {
       return (
         <Card
           key={hero.id}
@@ -23,7 +27,11 @@ export default function Home() {
         />
       );
     });
-  }
+
+  const pageCount = Math.ceil(data.length / usersPerPage);
+  const changePage = ({ selected }) => {
+    setPageNum(selected);
+  };
 
   return (
     <>
@@ -38,7 +46,12 @@ export default function Home() {
           Discover Marvel Characters
         </h1>
         <SearchBar placeholder={"Browse Marvel Characters"} setter={setData} />
-        <GridList>{cards ? cards : ""}</GridList>
+        <GridList>{displayUsers}</GridList>
+        <ReactPaginate
+          pageCount={pageCount}
+          onPageChange={changePage}
+          containerClassName="border border-black flex gap-1 m-2 p-2"
+        />
       </div>
     </>
   );
