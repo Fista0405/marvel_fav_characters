@@ -1,15 +1,12 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { useLocalStorage } from "lib/useLocalStorage";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Card = ({ name, tumbnail, id }) => {
-  const [isFavorite, setIsFavorite] = useState(() => {
-    const saved = localStorage.getItem(id);
-    const initialValue = JSON.parse(saved);
-    return initialValue || false;
-  });
+  const [isFavorite, setIsFavorite] = useLocalStorage(id, false);
+
   const router = useRouter();
 
   const favoriteHandler = (e) => {
@@ -21,10 +18,6 @@ const Card = ({ name, tumbnail, id }) => {
     e.stopPropagation();
     router.push(id.toString());
   };
-
-  useEffect(() => {
-    localStorage.setItem(id, JSON.stringify(isFavorite));
-  }, [isFavorite]);
 
   return (
     <article
