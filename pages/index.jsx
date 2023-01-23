@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import Head from "next/head";
 import SearchBar from "components/SearchBar";
-import GridList from "components/GridList";
+import Grid from "components/Grid";
 import Card from "components/Card";
 import ReactPaginate from "react-paginate";
 
@@ -12,11 +12,11 @@ export default function Home() {
   const [hero, setHero] = useState([]);
   const [pageNum, setPageNum] = useState(0);
 
-  const herosPerPage = 10;
+  const herosPerPage = 4;
   const pagesVisited = pageNum * herosPerPage;
 
   const heroCardsList = hero
-    .slice(pagesVisited, pagesVisited + herosPerPage)
+    ?.slice(pagesVisited, pagesVisited + herosPerPage)
     .map((hero) => {
       return (
         <Card
@@ -28,7 +28,7 @@ export default function Home() {
       );
     });
 
-  const pageCount = Math.ceil(hero.length / herosPerPage);
+  const pageCount = Math.ceil(hero?.length / herosPerPage);
   const changePage = ({ selected }) => {
     setPageNum(selected);
   };
@@ -46,12 +46,14 @@ export default function Home() {
           Discover Marvel Characters
         </h1>
         <SearchBar placeholder={"Browse Marvel Characters"} setter={setHero} />
-        <GridList>{heroCardsList}</GridList>
+        <Grid>{heroCardsList ? heroCardsList : ""}</Grid>
+
         <ReactPaginate
           pageCount={pageCount}
           onPageChange={changePage}
-          containerClassName="border border-black flex gap-1 m-2 p-2"
-          previousLabel="Previous"
+          pageLinkClassName="rounded p-2 hover:text-white hover:bg-red-700"
+          containerClassName="text-lg mx-1 my-4 p-4 flex justify-center items-center gap-2 border border-red-700 text-gray-900 rounded-lg"
+          activeClassName="bg-red-600 rounded hover:bg-red-700 hover:text-white"
         />
       </div>
     </>
