@@ -1,6 +1,28 @@
+import { useEffect, useState } from "react";
+import { getHero } from "lib/utils";
 import Head from "next/head";
+import Grid from "components/Grid";
 
 const Favorites = () => {
+  const [hero, setHero] = useState([]);
+
+  useEffect(() => {
+    const heroIdfromKey = Object.keys(localStorage).filter(
+      (key) => localStorage.getItem(key) === "true"
+    );
+
+    const fetchCharacter = async () => {
+      const heroData = heroIdfromKey.map(async (key) => {
+        return await getHero(key);
+      });
+      setHero(await Promise.all(heroData));
+    };
+
+    fetchCharacter();
+  }, []);
+
+  console.log(hero);
+
   return (
     <>
       <Head>
@@ -9,7 +31,16 @@ const Favorites = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/marvel.ico" />
       </Head>
-      <h1>Favorites</h1>
+      <>
+        <h1>Favorites</h1>
+        <Grid>
+          <div>
+            {hero.map((hero) => {
+              return <h1 key={hero.id}>{hero.name}</h1>;
+            })}
+          </div>
+        </Grid>
+      </>
     </>
   );
 };
