@@ -1,6 +1,11 @@
 import Head from "next/head";
+import { fetchCharacters } from "lib/utils";
 
 const About = () => {
+  const { data } = fetchCharacters();
+
+  console.log("characters:", data);
+
   return (
     <>
       <Head>
@@ -10,6 +15,7 @@ const About = () => {
         <link rel="icon" href="/marvel.ico" />
       </Head>
       <h1>About</h1>
+      <p>Fetch Characters Test Site</p>
     </>
   );
 };
