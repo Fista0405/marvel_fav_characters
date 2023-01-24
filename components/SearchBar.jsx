@@ -1,14 +1,17 @@
-import { useRef } from "react";
+import { useState } from "react";
 import { fetchCharacterDataList } from "lib/utils";
 
 const SearchBar = ({ placeholder, setter }) => {
-  let input = useRef("");
+  const [inputValue, setInputValue] = useState("");
+
+  const onChange = (event) => {
+    setInputValue(event.target.value);
+  };
 
   const handleClick = async (e) => {
     e.preventDefault();
-    let value = input.current.value;
 
-    let heroes = await fetchCharacterDataList(value);
+    let heroes = await fetchCharacterDataList(inputValue);
     setter(heroes);
   };
 
@@ -33,7 +36,8 @@ const SearchBar = ({ placeholder, setter }) => {
           </svg>
         </div>
         <input
-          ref={input}
+          value={inputValue}
+          onChange={onChange}
           type="search"
           id="search"
           className="block w-full p-4 pl-2 md:pl-10 text-sm text-gray-900 rounded-lg focus:ring-red-700 focus:border-red-700"
