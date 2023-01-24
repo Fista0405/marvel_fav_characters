@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { getHero } from "lib/utils";
 import Head from "next/head";
 import Grid from "components/Grid";
+import Card from "components/Card";
+
+const IMG_SIZE = "standard_large";
 
 const Favorites = () => {
   const [hero, setHero] = useState([]);
@@ -31,16 +34,20 @@ const Favorites = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/marvel.ico" />
       </Head>
-      <>
-        <h1>Favorites</h1>
+      <div className="flex flex-col items-center justify-center">
         <Grid>
-          <div>
-            {hero.map((hero) => {
-              return <h1 key={hero.id}>{hero.name}</h1>;
-            })}
-          </div>
+          {hero.map((hero) => {
+            return (
+              <Card
+                key={hero?.id}
+                name={hero?.name}
+                id={hero.id}
+                tumbnail={`${hero.thumbnail.path}/${IMG_SIZE}.${hero.thumbnail.extension}`}
+              />
+            );
+          })}
         </Grid>
-      </>
+      </div>
     </>
   );
 };
