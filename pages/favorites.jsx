@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getHero } from "lib/utils";
+import { getCharacter } from "lib/utils";
 import Head from "next/head";
 import Grid from "components/Grid";
 import Card from "components/Card";
@@ -16,7 +16,7 @@ const Favorites = () => {
 
     const fetchCharacter = async () => {
       const heroData = heroIdfromKey.map(async (key) => {
-        return await getHero(key);
+        return await getCharacter(key);
       });
       setHero(await Promise.all(heroData));
     };

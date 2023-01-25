@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fetchCharacterDataList } from "lib/utils";
+import { getFilteredCharacters } from "lib/utils";
 
 const SearchBar = ({ placeholder, setter }) => {
   const [inputValue, setInputValue] = useState("");
@@ -11,7 +11,7 @@ const SearchBar = ({ placeholder, setter }) => {
   const handleClick = async (e) => {
     e.preventDefault();
 
-    let heroes = await fetchCharacterDataList(inputValue);
+    let heroes = await getFilteredCharacters(inputValue);
     setter(heroes);
   };
 
