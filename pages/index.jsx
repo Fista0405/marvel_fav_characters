@@ -1,37 +1,24 @@
 import { useState } from "react";
-
 import Head from "next/head";
 import SearchBar from "components/SearchBar";
 import Grid from "components/Grid";
 import Card from "components/Card";
-import ReactPaginate from "react-paginate";
 
 const IMG_SIZE = "standard_large";
 
 export default function Home() {
   const [hero, setHero] = useState([]);
-  const [pageNum, setPageNum] = useState(0);
 
-  const herosPerPage = 4;
-  const pagesVisited = pageNum * herosPerPage;
-
-  const heroCardsList = hero
-    ?.slice(pagesVisited, pagesVisited + herosPerPage)
-    .map((hero) => {
-      return (
-        <Card
-          key={hero.id}
-          name={hero.name}
-          id={hero.id}
-          tumbnail={`${hero.thumbnail.path}/${IMG_SIZE}.${hero.thumbnail.extension}`}
-        />
-      );
-    });
-
-  const pageCount = Math.ceil(hero?.length / herosPerPage);
-  const changePage = ({ selected }) => {
-    setPageNum(selected);
-  };
+  const heroCardsList = hero.map((hero) => {
+    return (
+      <Card
+        key={hero.id}
+        name={hero.name}
+        id={hero.id}
+        tumbnail={`${hero.thumbnail.path}/${IMG_SIZE}.${hero.thumbnail.extension}`}
+      />
+    );
+  });
 
   return (
     <>
@@ -41,20 +28,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/marvel.ico" />
       </Head>
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center">
         <h1 className="uppercase text-xl mb-6 text-center">
           Discover Marvel Characters
         </h1>
         <SearchBar placeholder={"Browse Marvel Characters"} setter={setHero} />
-        <Grid>{heroCardsList ? heroCardsList : ""}</Grid>
-
-        <ReactPaginate
-          pageCount={pageCount}
-          onPageChange={changePage}
-          pageLinkClassName="rounded p-2 hover:text-white hover:bg-red-700"
-          containerClassName="text-lg mx-1 my-4 p-4 flex justify-center items-center gap-2 border border-red-700 text-gray-900 rounded-lg"
-          activeClassName="bg-red-600 rounded hover:bg-red-700 hover:text-white"
-        />
+        <Grid items={hero}>{heroCardsList ? heroCardsList : ""}</Grid>
       </div>
     </>
   );

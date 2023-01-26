@@ -24,7 +24,16 @@ const Favorites = () => {
     fetchCharacter();
   }, []);
 
-  console.log(hero);
+  const favoriteCharacters = hero.map((hero) => {
+    return (
+      <Card
+        key={hero.id}
+        name={hero.name}
+        id={hero.id}
+        tumbnail={`${hero.thumbnail.path}/${IMG_SIZE}.${hero.thumbnail.extension}`}
+      />
+    );
+  });
 
   return (
     <>
@@ -35,18 +44,10 @@ const Favorites = () => {
         <link rel="icon" href="/marvel.ico" />
       </Head>
       <div className="flex flex-col items-center justify-center">
-        <Grid>
-          {hero.map((hero) => {
-            return (
-              <Card
-                key={hero?.id}
-                name={hero?.name}
-                id={hero.id}
-                tumbnail={`${hero.thumbnail.path}/${IMG_SIZE}.${hero.thumbnail.extension}`}
-              />
-            );
-          })}
-        </Grid>
+        <h1 className="uppercase text-xl mb-6 text-center">
+          Favorite Characters
+        </h1>
+        <Grid items={hero}>{favoriteCharacters}</Grid>
       </div>
     </>
   );
