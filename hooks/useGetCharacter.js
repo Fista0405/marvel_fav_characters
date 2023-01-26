@@ -1,6 +1,6 @@
 import useSWR from "swr";
-import { fetcher } from "utils/utils";
-import { API_URL, GET_CHARACTERS } from "./constants";
+import { fetcher } from "lib/utils";
+import { API_URL, GET_CHARACTERS } from "lib/constants";
 
 function UseGetCharacterSWR(id) {
   const { data, error, isLoading } = useSWR(
@@ -9,7 +9,7 @@ function UseGetCharacterSWR(id) {
   );
 
   return {
-    data: data?.data.results,
+    data: data?.data.results[0],
     isLoading,
     isError: error,
   };

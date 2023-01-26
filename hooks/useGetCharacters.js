@@ -1,6 +1,6 @@
 import useSWR from "swr";
-import { fetcher } from "utils/utils";
-import { API_URL, GET_CHARACTERS } from "./constants";
+import { fetcher } from "lib/utils";
+import { API_URL, GET_CHARACTERS } from "lib/constants";
 
 function UseGetCharactersSWR() {
   const { data, error, isLoading } = useSWR(
