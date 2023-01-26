@@ -1,5 +1,7 @@
 Application in which you can search for Marvel characters, see their detail information and make favorite list of characters.
 
+Application is deployed https://marvel-fav-characters.vercel.app/ 
+
 !!!Application is still work in progress.!!!
 
 Applicaton uses [Marvel-API](https://developer.marvel.com/)
