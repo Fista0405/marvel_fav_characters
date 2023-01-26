@@ -17,11 +17,10 @@ const Grid = ({ children, items, herosPerPage = 4 }) => {
 
   return (
     <>
-      <div className="h-80">
-        <ul className="items-center my-10 justify-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-          {paginatedChildren}
-        </ul>
-      </div>
+      <ul className="items-center my-10 justify-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+        {paginatedChildren}
+      </ul>
+
       <ReactPaginate
         pageCount={pageCount}
         onPageChange={changePage}
