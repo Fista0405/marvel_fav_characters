@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
-import { getCharacterSWR } from "utils/utils";
+import UseGetCharacterSWR from "hooks/useGetCharacter";
 
 const HeroDetail = () => {
   const router = useRouter();
   const id = router.query.hero;
-  const { data, error, isLoading } = getCharacterSWR(id);
+  const { data, error, isLoading } = UseGetCharacterSWR(id);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error</div>;

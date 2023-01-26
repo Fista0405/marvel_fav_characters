@@ -1,4 +1,4 @@
-import { getHero, fetchCharactersClassic } from "utils/utils";
+import { getCharacter, getCharacters } from "lib/utils";
 
 const CharacterDetailView = ({ character }) => {
   return (
@@ -10,7 +10,7 @@ const CharacterDetailView = ({ character }) => {
 };
 
 export async function getStaticPaths() {
-  const characters = fetchCharactersClassic();
+  const characters = getCharacters();
 
   const paths = characters?.map((character) => ({
     params: { id: character?.id.toString() },
@@ -22,7 +22,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { id } = params;
 
-  const character = await getHero(id);
+  const character = await getCharacter(id);
 
   console.log(hero);
   return { props: { character } };

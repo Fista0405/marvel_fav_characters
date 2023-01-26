@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
-import { getCharacters } from "utils/utils";
+import { getCharacters } from "lib/utils";
 
 const About = () => {
   // const { data } = fetchCharacters();
