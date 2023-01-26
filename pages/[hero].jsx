@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { getCharacterSWR } from "lib/utils";
+import { getCharacterSWR } from "utils/utils";
 
 const HeroDetail = () => {
   const router = useRouter();

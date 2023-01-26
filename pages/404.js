@@ -9,7 +9,7 @@ const ErrorPage = () => {
     setTimeout(() => {
       router.push("/");
     }, 5000);
-  }, []);
+  }, [router]);
 
   return (
     <div className="underline text-center">

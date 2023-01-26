@@ -1,8 +1,20 @@
 import Head from "next/head";
-import { fetchCharacters } from "lib/utils";
+import { useState, useEffect } from "react";
+import { getCharacters } from "utils/utils";
 
 const About = () => {
-  const { data } = fetchCharacters();
+  // const { data } = fetchCharacters();
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    const fetchedData = async () => {
+      const data = await getCharacters();
+
+      setData(data);
+    };
+
+    fetchedData();
+  }, []);
 
   console.log("characters:", data);
 
