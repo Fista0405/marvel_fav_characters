@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="header-footer grid grid-cols-1 grid-rows-2 gap-2 mt-auto ">
       <div className="flex justify-around items-center ">
         <Image
-          src="/../public/static/images/marvel-m.png"
+          src="/static/images/marvel-m.png"
           alt="Marvel Letter M Logo"
           width={75}
           height={75}
