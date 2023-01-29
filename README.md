@@ -4,9 +4,9 @@ Created using: -[Next.js](https://nextjs.org/)
                -[Tailwind CSS](https://tailwindcss.com/)
                
 
-### Run it localy:
+## Run it localy:
                 1. npm run dev # or yarn dev
                 2. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Deployment link: 
-                -[https://marvel-fav-characters.vercel.app/](https://marvel-fav-characters.vercel.app/).
+## Deployment link: -[marvel-fav-characters.vercel](https://marvel-fav-characters.vercel.app/) 
+
