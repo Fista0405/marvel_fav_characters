@@ -1,21 +1,12 @@
-Application in which you can search for Marvel characters, see their detail information and make favorite list of characters.
+An application where the user can search for Marvel characters, save their favorites and view detailed information about each one.
 
-Application is deployed https://marvel-fav-characters.vercel.app/ 
+Created using: -[Next.js](https://nextjs.org/) 
+               -[Tailwind CSS](https://tailwindcss.com/)
+               
 
-!!!Application is still work in progress.!!!
+### Run it localy:
+                1. npm run dev # or yarn dev
+                2. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Applicaton uses [Marvel-API](https://developer.marvel.com/)
-
-App is created using [Next.js](https://nextjs.org/) & [Tailwind CSS](https://tailwindcss.com/)
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Deployment link: 
+                -[https://marvel-fav-characters.vercel.app/](https://marvel-fav-characters.vercel.app/).
