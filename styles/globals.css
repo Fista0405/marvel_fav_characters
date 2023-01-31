@@ -11,6 +11,12 @@
 }
 
 @layer components {
+    #__next {
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+    }
+
     .header-footer {
         @apply text-white bg-zinc-800  border-zinc-600;
     }

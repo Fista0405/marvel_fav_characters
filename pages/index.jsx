@@ -28,13 +28,13 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/marvel.ico" />
       </Head>
-      <div className="flex flex-col items-center">
-        <h1 className="uppercase text-xl mb-6 text-center">
+      <>
+        <h1 className="uppercase text-xl my-6 text-center">
           Discover Marvel Characters
         </h1>
         <SearchBar placeholder={"Browse Marvel Characters"} setter={setHero} />
         <Grid items={hero}>{heroCardsList ? heroCardsList : ""}</Grid>
-      </div>
+      </>
     </>
   );
 }

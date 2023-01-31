@@ -17,7 +17,7 @@ const Grid = ({ children, items, herosPerPage = 4 }) => {
 
   return (
     <>
-      <ul className="items-center my-10 justify-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+      <ul className="items-center my-6 px-3 justify-center grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3">
         {paginatedChildren}
       </ul>
 

@@ -3,8 +3,8 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="header-footer grid grid-cols-1 grid-rows-2 gap-2 mt-auto ">
-      <div className="flex justify-around items-center ">
+    <footer className="header-footer text-center text-xs md:text-base grid grid-rows-2">
+      <div className="flex justify-evenly items-center ">
         <Image
           src="/static/images/marvel-m.png"
           alt="Marvel Letter M Logo"
@@ -13,7 +13,7 @@ const Footer = () => {
         />
         <div>Social Network Grid</div>
       </div>
-      <ul className="flex justify-around items-center">
+      <ul className="place-items-center grid grid-rows-2 grid-cols-2 md:grid md:grid-cols-4 md:grid-rows-1">
         <Link href="/" className="hover:text-red-500">
           Terms of Use
         </Link>

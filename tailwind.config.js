@@ -9,6 +9,9 @@ module.exports = {
       fontFamily: {
         poppins: ["Poppins"],
       },
+      gridTemplateRows: {
+        layout: "auto 1fr auto",
+      },
       dropShadow: {
         "3xl": "5px 5px 15px #707070",
         "4xl": [

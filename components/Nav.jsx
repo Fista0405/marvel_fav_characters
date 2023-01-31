@@ -3,9 +3,9 @@ import Link from "next/link";
 
 const Nav = () => {
   return (
-    <nav>
-      <ul className="header-footer flex justify-evenly items-center uppercase border-b drop-shadow-lg">
-        <li>
+    <nav className="header-footer border-b drop-shadow-lg">
+      <ul className="flex items-center justify-around uppercase">
+        <li className=" ">
           <Link href="/">
             <Image
               priority
@@ -19,11 +19,6 @@ const Nav = () => {
         <li>
           <Link className="hover:text-red-500" href="/favorites">
             Favorites
-          </Link>
-        </li>
-        <li>
-          <Link className="hover:text-red-500" href="/about">
-            About
           </Link>
         </li>
       </ul>
