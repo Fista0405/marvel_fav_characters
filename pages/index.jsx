@@ -1,21 +1,28 @@
 import { useState } from "react";
 import Head from "next/head";
-import SearchBar from "components/SearchBar";
 import Grid from "components/Grid";
 import Card from "components/Card";
+import SearchInputField from "components/SearchInputField";
+import { getFilteredCharacters } from "lib/utils";
 
 const IMG_SIZE = "standard_large";
 
 export default function Home() {
-  const [hero, setHero] = useState([]);
+  const [character, setCharacter] = useState([]);
 
-  const heroCardsList = hero.map((hero) => {
+  const fetchCharacter = async (searchedInputTerm) => {
+    const res = await getFilteredCharacters(searchedInputTerm);
+
+    setCharacter(res);
+  };
+
+  const heroCardsList = character?.map((character) => {
     return (
       <Card
-        key={hero.id}
-        name={hero.name}
-        id={hero.id}
-        tumbnail={`${hero.thumbnail.path}/${IMG_SIZE}.${hero.thumbnail.extension}`}
+        key={character.id}
+        name={character.name}
+        id={character.id}
+        tumbnail={`${character.thumbnail.path}/${IMG_SIZE}.${character.thumbnail.extension}`}
       />
     );
   });
@@ -32,8 +39,8 @@ export default function Home() {
         <h1 className="uppercase text-xl my-6 text-center">
           Discover Marvel Characters
         </h1>
-        <SearchBar placeholder={"Browse Marvel Characters"} setter={setHero} />
-        <Grid items={hero}>{heroCardsList ? heroCardsList : ""}</Grid>
+        <SearchInputField onSearch={fetchCharacter} />
+        <Grid items={character}>{heroCardsList ? heroCardsList : ""}</Grid>
       </>
     </>
   );
