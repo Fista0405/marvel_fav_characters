@@ -3,9 +3,9 @@ import Link from "next/link";
 
 const Nav = () => {
   return (
-    <nav className="header-footer border-b drop-shadow-lg">
+    <nav className="header-footer z-50 sticky top-0 border-b drop-shadow-lg">
       <ul className="flex items-center justify-around uppercase">
-        <li className=" ">
+        <li>
           <Link href="/">
             <Image
               priority

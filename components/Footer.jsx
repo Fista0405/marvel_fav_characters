@@ -3,8 +3,8 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="header-footer text-center text-xs md:text-base grid grid-rows-2">
-      <div className="flex justify-evenly items-center ">
+    <footer className="header-footer p-6 text-center text-xs md:text-base grid grid-rows-2">
+      <div className="flex justify-evenly items-center mb-4">
         <Image
           src="/static/images/marvel-m.png"
           alt="Marvel Letter M Logo"
