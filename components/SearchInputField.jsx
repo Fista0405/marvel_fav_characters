@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 const SearchInputField = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
-
   const router = useRouter();
 
   const inputHandler = (event) => {
@@ -26,10 +25,14 @@ const SearchInputField = ({ onSearch }) => {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setDebouncedSearchTerm(searchTerm);
-      router.push({
-        pathname: "/",
-        query: { search: searchTerm },
-      });
+      searchTerm
+        ? router.push({
+            pathname: "/",
+            query: { search: searchTerm },
+          })
+        : router.push({
+            pathname: "/",
+          });
     }, 500);
 
     return () => {
@@ -41,7 +44,7 @@ const SearchInputField = ({ onSearch }) => {
 
   useEffect(() => {
     if (!debouncedSearchTerm) {
-      return;
+      onSearch(setDebouncedSearchTerm(""));
     }
 
     if (debouncedSearchTerm === previousDebouncedSearchTerm) {
@@ -52,6 +55,7 @@ const SearchInputField = ({ onSearch }) => {
   }, [debouncedSearchTerm, previousDebouncedSearchTerm, onSearch]);
 
   const clearInput = () => {
+    onSearch(setDebouncedSearchTerm());
     setSearchTerm("");
   };
 
