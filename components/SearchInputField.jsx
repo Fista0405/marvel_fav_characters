@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 
 const SearchInputField = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
+
+  const router = useRouter();
 
   const inputHandler = (event) => {
     setSearchTerm(event.target.value);
@@ -17,8 +20,16 @@ const SearchInputField = ({ onSearch }) => {
   };
 
   useEffect(() => {
+    setSearchTerm(router.query.search || "");
+  }, [router.query.search]);
+
+  useEffect(() => {
     const timeoutId = setTimeout(() => {
       setDebouncedSearchTerm(searchTerm);
+      router.push({
+        pathname: "/",
+        query: { search: searchTerm },
+      });
     }, 500);
 
     return () => {
@@ -40,13 +51,22 @@ const SearchInputField = ({ onSearch }) => {
     onSearch(debouncedSearchTerm);
   }, [debouncedSearchTerm, previousDebouncedSearchTerm, onSearch]);
 
+  const clearInput = () => {
+    setSearchTerm("");
+  };
+
   return (
-    <input
-      type="text"
-      placeholder="Search..."
-      value={searchTerm}
-      onChange={inputHandler}
-    />
+    <>
+      <label className="">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchTerm}
+          onChange={inputHandler}
+        />
+        <button onClick={clearInput}>X</button>
+      </label>
+    </>
   );
 };
 
