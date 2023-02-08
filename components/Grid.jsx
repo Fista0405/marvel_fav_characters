@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
 import Button from "./Button";
+import Modal from "./Modal";
 
 const Grid = ({ children, items, herosPerPage = 4, removeHandler }) => {
   const [pageNum, setPageNum] = useState(0);
@@ -30,8 +31,9 @@ const Grid = ({ children, items, herosPerPage = 4, removeHandler }) => {
           activeClassName="bg-red-600 rounded hover:bg-red-700 hover:text-white"
         />
       ) : null}
+
       {items?.length && removeHandler ? (
-        <Button onClick={removeHandler}>Delete List</Button>
+        <Modal onConfirm={removeHandler} />
       ) : null}
     </>
   );

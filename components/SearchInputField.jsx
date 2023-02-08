@@ -61,7 +61,7 @@ const SearchInputField = ({ onSearch }) => {
   };
 
   return (
-    <label className="flex ">
+    <label className="flex flex-col sm:flex-row items-center justify-center">
       <input
         type="text"
         className="mr-1 placeholder:text-slate-400 rounded-md border-red-600 outline-none focus:outline-none focus:border-red-600 focus:ring-2 focus:ring-red-300"
