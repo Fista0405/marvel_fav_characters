@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
+import Button from "./Button";
 
 const SearchInputField = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -60,17 +61,16 @@ const SearchInputField = ({ onSearch }) => {
   };
 
   return (
-    <>
-      <label className="">
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchTerm}
-          onChange={inputHandler}
-        />
-        <button onClick={clearInput}>X</button>
-      </label>
-    </>
+    <label className="flex ">
+      <input
+        type="text"
+        className="mr-1 placeholder:text-slate-400 rounded-md border-red-600 outline-none focus:outline-none focus:border-red-600 focus:ring-2 focus:ring-red-300"
+        placeholder="Search..."
+        value={searchTerm}
+        onChange={inputHandler}
+      />
+      <Button onClick={clearInput}>Clear</Button>
+    </label>
   );
 };
 
