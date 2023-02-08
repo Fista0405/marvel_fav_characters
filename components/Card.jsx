@@ -1,18 +1,10 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useLocalStorage } from "hooks/useLocalStorage";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Card = ({ name, tumbnail, id }) => {
-  const [isFavorite, setIsFavorite] = useLocalStorage(id, false);
-
+const Card = ({ id, name, tumbnail, isFavorited, toggleFavorite }) => {
   const router = useRouter();
-
-  const favoriteHandler = (e) => {
-    e.stopPropagation();
-    setIsFavorite((isFavorite) => !isFavorite);
-  };
 
   const navigateHandler = (e) => {
     e.stopPropagation();
@@ -35,9 +27,12 @@ const Card = ({ name, tumbnail, id }) => {
       <FontAwesomeIcon
         className="mt-auto mb-2"
         size="lg"
-        onClick={favoriteHandler}
+        onClick={(e) => {
+          e.stopPropagation();
+          toggleFavorite(id);
+        }}
         icon={faStar}
-        color={isFavorite ? "red" : "gray"}
+        color={isFavorited ? "red" : "gray"}
       />
     </article>
   );

@@ -4,28 +4,19 @@ import Grid from "components/Grid";
 import Card from "components/Card";
 import SearchInputField from "components/SearchInputField";
 import { getFilteredCharacters } from "lib/utils";
+import useFavorites from "hooks/useFavorites";
 
 const IMG_SIZE = "standard_large";
 
 export default function Home() {
   const [character, setCharacter] = useState([]);
+  const { favorites, toggleFavorite } = useFavorites();
 
   const fetchCharacter = async (searchedInputTerm) => {
     const res = await getFilteredCharacters(searchedInputTerm);
 
     setCharacter(res);
   };
-
-  const heroCardsList = character?.map((character) => {
-    return (
-      <Card
-        key={character.id}
-        name={character.name}
-        id={character.id}
-        tumbnail={`${character.thumbnail.path}/${IMG_SIZE}.${character.thumbnail.extension}`}
-      />
-    );
-  });
 
   return (
     <>
@@ -40,7 +31,18 @@ export default function Home() {
           Discover Marvel Characters
         </h1>
         <SearchInputField onSearch={fetchCharacter} />
-        <Grid items={character}>{heroCardsList ? heroCardsList : ""}</Grid>
+        <Grid items={character}>
+          {character?.map((character) => (
+            <Card
+              isFavorited={favorites?.includes(character.id)}
+              toggleFavorite={() => toggleFavorite(character.id)}
+              key={character.id}
+              name={character.name}
+              id={character.id}
+              tumbnail={`${character.thumbnail.path}/${IMG_SIZE}.${character.thumbnail.extension}`}
+            />
+          ))}
+        </Grid>
       </>
     </>
   );

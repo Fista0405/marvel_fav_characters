@@ -3,30 +3,30 @@ import { getCharacter } from "lib/utils";
 import Head from "next/head";
 import Grid from "components/Grid";
 import Card from "components/Card";
+import useFavorites from "hooks/useFavorites";
 
 const IMG_SIZE = "standard_large";
 
 const Favorites = () => {
   const [hero, setHero] = useState([]);
+  const { favorites, toggleFavorite, deleteAll } = useFavorites();
 
   useEffect(() => {
-    const heroIdfromKey = Object.keys(localStorage).filter(
-      (key) => localStorage.getItem(key) === "true"
-    );
-
     const fetchCharacter = async () => {
-      const heroData = heroIdfromKey.map(async (key) => {
+      const heroData = favorites.map(async (key) => {
         return await getCharacter(key);
       });
       setHero(await Promise.all(heroData));
     };
 
     fetchCharacter();
-  }, []);
+  }, [favorites.length]);
 
   const favoriteCharacters = hero.map((hero) => {
     return (
       <Card
+        isFavorited={favorites.includes(hero?.id)}
+        toggleFavorite={() => toggleFavorite(hero?.id)}
         key={hero.id}
         name={hero.name}
         id={hero.id}
@@ -47,7 +47,9 @@ const Favorites = () => {
         <h1 className="uppercase text-xl my-6 text-center">
           Favorite Characters
         </h1>
-        <Grid items={hero}>{favoriteCharacters}</Grid>
+        <Grid items={hero} removeHandler={deleteAll}>
+          {favoriteCharacters}
+        </Grid>
       </>
     </>
   );
