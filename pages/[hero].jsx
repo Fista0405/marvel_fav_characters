@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import UseGetCharacterSWR from "hooks/useGetCharacter";
+import useGetCharacterSWR from "hooks/useGetCharacter";
 import Image from "next/image";
 
 const HeroDetail = () => {
@@ -7,7 +7,7 @@ const HeroDetail = () => {
 
   const router = useRouter();
   const id = router.query.hero;
-  const { data, error, isLoading } = UseGetCharacterSWR(id);
+  const { data, error, isLoading } = useGetCharacterSWR(id);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error</div>;
